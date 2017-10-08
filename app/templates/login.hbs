@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col m2 l3"></div>
+    <div class="col s12 m8 l6">
+      <img src="media/loginlg.png" width="100%" style="margin-top: 20px;">
+      <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          {{input type='text' value=usuario}}
+          <label for="usuario">Usuario</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+          {{input type='password' value=contrasena}}
+          <label for="contrasena">Contraseña</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">store_mall_directory</i>
+          {{#power-select options=model.sucursal selected=sucursal noMatchesMessage="No encontrado" placeholder='Sucursal' searchField='name' onchange=(action (mut sucursal)) as |suc|}}
+            {{suc.name}}
+          {{/power-select}}
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">watch_later</i>
+          {{#power-select options=model.turno selected=turno placeholder='Turno' searchField='name' noMatchesMessage="No encontrado" onchange=(action (mut turno)) as |turn|}}
+            {{turn.name}}
+          {{/power-select}}
+        </div>
+      </div>
+      <a {{action "init" usuario contrasena }}class="waves-effect waves-light btn brown lighten-2"><i class="material-icons right">done</i>Entrar</a>
+      <a class="waves-effect waves-light btn brown lighten-2 right"><i class="material-icons right">clear</i>Cancelar</a>
+    </form>
+    </div>
+    <div class="col m2 l3"></div>
+</div>
