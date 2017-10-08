@@ -15,6 +15,9 @@ module.exports = function(environment) {
       storageBucket: "quesadillaselgueromx.appspot.com",
       messagingSenderId: "811068491133"
     },
+    torii: {
+      sessionServiceName: 'session'
+    }
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
