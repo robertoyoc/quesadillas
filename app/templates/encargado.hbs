@@ -1,1 +1,7 @@
 bienvenido encargado
+
+{{#if session.isAuthenticated}}
+  Logged in as {{session.currentUser.email}}
+  {{log session.currentUser}}
+  <button {{action "signOut"}}>Sign out</button>
+{{/if}}

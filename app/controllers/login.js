@@ -27,9 +27,11 @@ export default Ember.Controller.extend({
             //registrado correctamente
             if (Controller.get('currentUser.isAuthenticated')) {
               return Controller.get('currentUser').loadAccount().then(() => {
-                console.log(Controller.get('currentUser.account'));
                 if (Controller.get('currentUser.account.perfil')=="encargado") {
                   return Controller.transitionToRoute('encargado');
+                }
+                else if(Controller.get('currentUser.account.perfil')=="dueño"){
+                  return Controller.transitionToRoute('dueno');
                 }
                 else{
                   return Controller.transitionToRoute('index');
