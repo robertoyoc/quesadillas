@@ -29,6 +29,7 @@ export default Ember.Service.extend({
       equalTo: this.get('session.currentUser.uid'),
       limitToLast: 1
     }).then((account) => {
+      console.log(account)
       this.set('_account', account.get('firstObject'));
       return this.get('_account');
     });

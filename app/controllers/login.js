@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service(),
-  asd: "Hola",
+  currentUser: Ember.inject.service(),
   actions: {
     foo() { },
     saveTurn(turno){
@@ -25,7 +25,17 @@ export default Ember.Controller.extend({
           }).then(function(){
             swal.close();
             //registrado correctamente
-            Controller.transitionToRoute('index');
+            if (Controller.get('currentUser.isAuthenticated')) {
+              return Controller.get('currentUser').loadAccount().then(() => {
+                console.log(Controller.get('currentUser.account'));
+                if (Controller.get('currentUser.account.perfil')=="encargado") {
+                  return Controller.transitionToRoute('encargado');
+                }
+                else{
+                  return Controller.transitionToRoute('index');
+                }
+              });
+            }
 
           }, function(data){
             console.log(data)
